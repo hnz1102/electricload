@@ -29,7 +29,7 @@ And it can measure the voltage, current, and power consumption of the device and
 
 # How to use the Electric Load and Logger
 
-At first, connect the power supply to this electric load as shown in the image below. The Plus line is connected to the 'Input +' terminal, and the GND line is connected to the 'Input -' terminal.
+At first, connect the power supply to this electric load as shown in the image below. The Plus line is connected to the 'Input +' terminal, and the GND line is connected to the 'Input -' terminal. And Input- is connected to the GND terminal, and Input+ is connected to the 'VBUS' terminal. This allows the device to measure the voltage.
 ![terminal](doc/terminal_s.jpg)
 
 Then, connect the USB Power Delivery (PD) line to the USB-C port. The PD line must be connected to the USB PD Charger. This load gets power from the USB PD 12V.
@@ -386,6 +386,8 @@ The heat sink is not included in the schematic data. You can use the heat sink w
 I used this [heat sink](https://www.ainex.jp/products/cc-06b/)
 
 I guess another [heat sink](https://www.tronwire.com/collections/tronwire-cpu-coolers/products/tw-10) is also good.
+
+This PCB is designed by [Kicad](https://www.kicad.org/). This board image photo is shown the jumper wire. But, the PCB data is already fixed the error.
 
 ## LICENSE
 This source code is licensed under MIT. Other Hardware Schematic documents are licensed under CC-BY-SA V4.0.
