@@ -1,0 +1,145 @@
+(footprint "WS-TASV SMT Tact Switch"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "WS-TASV SMT Tact Switch 3.0 x 2.6 mm with ground terminal")
+	(property "Reference" "SW**"
+		(at 0.72 2.84 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "a9742ac2-700f-4258-b84a-e311120c4fdb")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "WS-TASV SMT Tact Switch"
+		(at 1.03 4.9 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "5b8b6b99-a8f6-42d2-95c4-a9587e5b9091")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "00000000-0000-0000-0000-000000000000")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "00000000-0000-0000-0000-000000000000")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "00000000-0000-0000-0000-000000000000")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(fp_rect
+		(start -2.11 -1.39)
+		(end 2.12 1.43)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "bb71da73-45c0-42ef-8a87-a59d5d3578a7")
+	)
+	(fp_rect
+		(start -2.25 -1.5)
+		(end 2.25 1.57)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "d020226d-fd3e-4780-8ebf-021123cb6a47")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0.41 13.26 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "1152ca63-45ee-42f5-9da1-11af4188d664")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd roundrect
+		(at -1.575 -0.85)
+		(size 0.65 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "19dfe765-6a0f-4502-b4a8-c7c813c25fa6")
+	)
+	(pad "2" smd roundrect
+		(at 1.575 -0.85)
+		(size 0.65 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "8701296e-c95b-4e6f-b258-079d2f23f330")
+	)
+	(pad "3" smd roundrect
+		(at -1.575 0.85)
+		(size 0.65 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "710a9cda-958e-40e1-b317-5b7467cfe9bd")
+	)
+	(pad "4" smd roundrect
+		(at 1.575 0.85)
+		(size 0.65 0.6)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "d36841c8-a9ce-4caf-9c26-48da35c8358c")
+	)
+	(pad "5" smd roundrect
+		(at -1.725 0)
+		(size 0.35 0.7)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "379bc411-0254-497f-89f1-088ceaf1bef5")
+	)
+	(pad "6" smd roundrect
+		(at 1.725 0)
+		(size 0.35 0.7)
+		(layers "F.Cu" "F.Paste" "F.Mask")
+		(roundrect_rratio 0.25)
+		(uuid "18bdb525-d318-4561-b0d7-a02afcf7eac6")
+	)
+)

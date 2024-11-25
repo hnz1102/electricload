@@ -1,0 +1,188 @@
+(footprint "TB112-2-2-3-E-1 Terminal Block"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "TB112-2-2-3-E-1")
+	(tags "Terminal Block")
+	(property "Reference" "REF**"
+		(at 7.75 -6.25 180)
+		(layer "F.SilkS")
+		(uuid "44cd2e56-f524-475b-99db-4a2d8c05a7f6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "Screw_Terminal_01x03"
+		(at 22.5 -6.25 180)
+		(layer "F.Fab")
+		(uuid "eba9dae8-90ea-4b57-b66b-0be21fef6d87")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "55dc6dfa-f1f4-4796-95d4-c85a24c8c801")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d9ea1268-5150-4bd4-8b3f-4255f5ef169b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Generic screw terminal, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2e363592-14a2-4b66-9f7b-df2d15cb652a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_line
+		(start -3.52 -5.35)
+		(end -0.88 -5.35)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "16b182e4-b538-4f56-bd4c-90b4a1e2bd30")
+	)
+	(fp_line
+		(start -3.51 -5.35)
+		(end -3.51 -3.2)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "8b1d6a3f-d965-43cb-91b8-7d7357d6b614")
+	)
+	(fp_rect
+		(start -3.2 -5)
+		(end 12.66 4)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "31232178-31d6-473c-ba49-105b17d499be")
+	)
+	(fp_circle
+		(center 0 -3.5)
+		(end 1.5 -3.5)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "2f2d3d8d-3360-4040-ba6a-6ab4fe50eb5c")
+	)
+	(fp_circle
+		(center 5.08 -3.5)
+		(end 6.58 -3.5)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "a4c69a5f-abf4-46d5-b1ed-5648f4a30509")
+	)
+	(fp_circle
+		(center 10.16 -3.5)
+		(end 11.66 -3.5)
+		(stroke
+			(width 0.15)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.SilkS")
+		(uuid "04b639b7-2d80-4f89-baa2-43224f304e22")
+	)
+	(fp_rect
+		(start -3.27 -5.16)
+		(end 12.77 4.06)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "d1553f08-fd0d-4f01-8c18-31b233400dcf")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 14.99 0 180)
+		(layer "F.Fab")
+		(uuid "03c5f0ee-b646-4717-9e75-c024bc4a075e")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.12)
+			)
+		)
+	)
+	(pad "1" thru_hole rect
+		(at 0 0)
+		(size 3 3)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "3f419fd7-1f66-468a-a9c2-43463b2135d3")
+	)
+	(pad "2" thru_hole circle
+		(at 5.08 0)
+		(size 3 3)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "07a4b974-17e2-43e9-acc3-caf87c3dbf39")
+	)
+	(pad "3" thru_hole circle
+		(at 10.16 0)
+		(size 3 3)
+		(drill 1.3)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "541cce8a-a5f5-4708-85dd-afbb250e49aa")
+	)
+	(model "${KICAD6_3DMODEL_DIR}/Connector.3dshapes/Banana_Jack_3Pin.wrl"
+		(offset
+			(xyz 14.99999977 0 0)
+		)
+		(scale
+			(xyz 2 2 2)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

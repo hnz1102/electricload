@@ -1,0 +1,583 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "3e67e70f-fb04-4fc1-b37e-35862e4f3ed1")
+	(paper "A4")
+	(title_block
+		(title "ELECTRIC LOAD & LOGGER V2")
+		(date "2024-10-11")
+		(rev "Rev.0")
+		(company "HNZ")
+		(comment 1 "Licensed under CC-BY-SA V4.0")
+		(comment 2 "(C) 2024 Hiroshi Nakajima <hnakamiru1103@gmail.com>")
+	)
+	(lib_symbols)
+	(wire
+		(pts
+			(xy 109.22 66.04) (xy 132.08 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e0da768-5289-4705-bcc2-d0738ca2399e")
+	)
+	(wire
+		(pts
+			(xy 201.93 113.03) (xy 212.09 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "351b566d-215a-4b10-89ee-a56fb41be48c")
+	)
+	(wire
+		(pts
+			(xy 162.56 109.22) (xy 109.22 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36ff4525-d8cc-40d2-bf85-901a10c29260")
+	)
+	(wire
+		(pts
+			(xy 162.56 81.28) (xy 162.56 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4db7275d-143d-46c2-8246-8123003cf363")
+	)
+	(wire
+		(pts
+			(xy 180.34 81.28) (xy 180.34 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51427f7d-535a-4990-ae37-fd7668c3a97b")
+	)
+	(wire
+		(pts
+			(xy 171.45 81.28) (xy 171.45 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "583ec7d9-8e79-41e7-a084-f0f1d6977bdf")
+	)
+	(wire
+		(pts
+			(xy 212.09 115.57) (xy 204.47 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ae342be-3bda-4127-ae32-776e9ed5c007")
+	)
+	(wire
+		(pts
+			(xy 207.01 67.31) (xy 193.04 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6182c17f-5291-4f53-9c2a-1699d06ae9ac")
+	)
+	(wire
+		(pts
+			(xy 173.99 81.28) (xy 173.99 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65858fad-8835-4910-8af5-0f92eb206d1f")
+	)
+	(wire
+		(pts
+			(xy 168.91 113.03) (xy 109.22 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70072efc-d855-4d16-b4ef-e63275582887")
+	)
+	(wire
+		(pts
+			(xy 207.01 118.11) (xy 207.01 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "798125fe-4bb9-4212-b9c3-e3acc50c9fa4")
+	)
+	(wire
+		(pts
+			(xy 109.22 63.5) (xy 132.08 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a12e5a8-15fa-481d-8e7b-a48eaf31b565")
+	)
+	(wire
+		(pts
+			(xy 193.04 64.77) (xy 204.47 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8ca87e3d-55d6-489d-ad51-c74396b9ec3b")
+	)
+	(wire
+		(pts
+			(xy 193.04 62.23) (xy 201.93 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90c14c48-f452-45b7-b090-5ef83dcd9e22")
+	)
+	(wire
+		(pts
+			(xy 168.91 81.28) (xy 168.91 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c10b96c0-fe8a-4110-9a35-5d7a65e21579")
+	)
+	(wire
+		(pts
+			(xy 204.47 115.57) (xy 204.47 64.77)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c19ba734-190a-4e99-a3f4-c81f423ea755")
+	)
+	(wire
+		(pts
+			(xy 173.99 118.11) (xy 109.22 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d331a311-4e6b-492c-b046-24877aaf09b7")
+	)
+	(wire
+		(pts
+			(xy 212.09 118.11) (xy 207.01 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d88de6ee-9ed9-4967-b2a6-39b755f03de4")
+	)
+	(wire
+		(pts
+			(xy 180.34 128.27) (xy 109.22 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f916c758-823d-47fb-a69d-4789b489c6fe")
+	)
+	(wire
+		(pts
+			(xy 201.93 62.23) (xy 201.93 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fb11d0b0-6c62-4999-9ce5-9e20481c17ca")
+	)
+	(wire
+		(pts
+			(xy 171.45 115.57) (xy 109.22 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fddbf019-4207-419f-9633-0d344ceec753")
+	)
+	(sheet
+		(at 212.09 102.87)
+		(size 60.96 38.1)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0c5bed0c-00c0-4003-a023-241235537288")
+		(property "Sheetname" "FAN_CTL"
+			(at 212.09 102.1584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "fanctl.kicad_sch"
+			(at 212.09 141.5546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "FANPWRON" input
+			(at 212.09 113.03 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "aa60c1a5-e1d5-4097-876a-5f8d18b25e29")
+		)
+		(pin "FANPWM" input
+			(at 212.09 115.57 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "52ce67f3-3fd8-4e18-be1b-87abe94673a9")
+		)
+		(pin "FANDET" output
+			(at 212.09 118.11 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "6084e664-1324-4388-a361-f5f29e3072b5")
+		)
+		(instances
+			(project "mosfetload"
+				(path "/3e67e70f-fb04-4fc1-b37e-35862e4f3ed1"
+					(page "5")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 132.08 40.64)
+		(size 60.96 40.64)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "443c84a0-2d75-472d-a310-478dcf94ad78")
+		(property "Sheetname" "ESP32_CONT"
+			(at 132.08 39.9284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "esp32_cont.kicad_sch"
+			(at 132.08 81.8646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "USBDP" bidirectional
+			(at 132.08 66.04 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "d2d439e9-8a46-4bbd-9bde-86aa6000fb5c")
+		)
+		(pin "USBDM" bidirectional
+			(at 132.08 63.5 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "b7811630-1638-4e5a-83ad-4604d8cd0498")
+		)
+		(pin "FANPWRON" output
+			(at 193.04 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f0578a78-9325-4bb0-a0af-fa25f9d4b6bc")
+		)
+		(pin "FANPWM" output
+			(at 193.04 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "5cf1bd91-07e4-4cec-af87-d61c42be1ca4")
+		)
+		(pin "TEMP_ADC" input
+			(at 180.34 81.28 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "33ab6a83-2478-4150-b3cb-d4d7414f6b1d")
+		)
+		(pin "SENSE_SDA" input
+			(at 173.99 81.28 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "0b5ac2cf-08e9-4a75-bab2-d0565a254bb1")
+		)
+		(pin "FANDET" input
+			(at 193.04 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "380bb6ad-0c8c-459b-b8e6-6858fdf67bc9")
+		)
+		(pin "PWM_OUT" input
+			(at 162.56 81.28 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "b1b68fd5-aeb0-49b2-8828-45145bc6dbc3")
+		)
+		(pin "SENSE_SCL" output
+			(at 168.91 81.28 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "eb56d66c-57a4-4de1-aabe-199d4c6d81d8")
+		)
+		(pin "SENSE_ALERT" input
+			(at 171.45 81.28 270)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "de5a9e81-6fd9-4e84-8985-28dfecf74dd9")
+		)
+		(instances
+			(project "mosfetload"
+				(path "/3e67e70f-fb04-4fc1-b37e-35862e4f3ed1"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 102.87)
+		(size 64.77 38.1)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "8eaf6006-d155-4c74-832a-6210db2d2794")
+		(property "Sheetname" "POWER_LOAD"
+			(at 44.45 102.1584 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power_load.kicad_sch"
+			(at 44.45 141.5546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "PWM_IN" input
+			(at 109.22 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f2bf1c2e-759f-4f35-975c-7faed6f474ff")
+		)
+		(pin "SENSE_SCL" input
+			(at 109.22 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "68c4ab99-4f25-421b-93c9-003c439dfcb7")
+		)
+		(pin "SENSE_ALERT" output
+			(at 109.22 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "d35f547d-310d-4e9e-88ab-bf67023467b9")
+		)
+		(pin "SENSE_SDA" output
+			(at 109.22 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "54fb0006-8018-44fd-943b-a0a2e2300d00")
+		)
+		(pin "TEMP_ADC" input
+			(at 109.22 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1d61e86b-4529-4d42-90cf-d4819afc8716")
+		)
+		(instances
+			(project "mosfetload"
+				(path "/3e67e70f-fb04-4fc1-b37e-35862e4f3ed1"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 44.45 40.64)
+		(size 64.77 40.64)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "fb60c159-7983-46e9-9cc6-2751c811ed25")
+		(property "Sheetname" "USBPDPower"
+			(at 44.45 39.9284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "usb_pd_power.kicad_sch"
+			(at 44.45 81.8646 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "USBDM" bidirectional
+			(at 109.22 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0b52baa4-c7b5-4930-9668-ed6a27fc695e")
+		)
+		(pin "USBDP" bidirectional
+			(at 109.22 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "f56d4276-baea-4e03-bf87-13dfa1045984")
+		)
+		(instances
+			(project "mosfetload"
+				(path "/3e67e70f-fb04-4fc1-b37e-35862e4f3ed1"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
