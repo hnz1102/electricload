@@ -7,7 +7,7 @@
 
 # Electric Load and Logger
 
-This is a Electric Load and Logger. It can consume the power of the device and send the data to the server.
+This is an Electric Load and Logger. It can consume the power of the device and send the data to the server.
 The maximum power is 100W, maximum voltage is 30V, and maximum current is 10A. But, it must be used under 100W.
 And it can measure the voltage, current, and power consumption of the device and send the data to the InfluxDB server. You can see the data on the Dashboard.
 
@@ -15,7 +15,7 @@ And it can measure the voltage, current, and power consumption of the device and
 
 **High Power** - It can measure the power consumption of the device up to 100W.
 
-**Contorlable** - You can control the current consumption by the device. The current can be controlled every 10mA from 10mA to 10A.
+**Controllable** - You can control the current consumption by the device. The current can be controlled every 10mA from 10mA to 10A.
 
 **Auto Control** - The current consumption can be controlled automatically by the device using the PID controller.
 
@@ -29,24 +29,24 @@ And it can measure the voltage, current, and power consumption of the device and
 
 # How to use the Electric Load and Logger
 
-At first, connect the power supply to the this electric load bellow the image. The Plus line is connected to the 'Input +' terminal, and the GND line is connected to the 'Input -' terminal.
+At first, connect the power supply to this electric load as shown in the image below. The Plus line is connected to the 'Input +' terminal, and the GND line is connected to the 'Input -' terminal.
 ![terminal](doc/terminal_s.jpg)
 
-Then, connect the USB Power Delivery (PD) line to the USB-C port. The PD line must be connected to the USB PD Charger. This load get the power from the USB PD 12V.
+Then, connect the USB Power Delivery (PD) line to the USB-C port. The PD line must be connected to the USB PD Charger. This load gets power from the USB PD 12V.
 
 After connecting the power supply, the display will show the current voltage, current, and power consumption. Then, you can set the current consumption by the device using the touch pad. Clockwise rotation increases the current, and counterclockwise rotation decreases the current. The current can be controlled every 10mA from 10mA to 10A. Fast rotation will increase or decrease the current quickly every 100mA. After setting the current, press the Center Position of the touch pad during over a second to start the load and measurement. The current consumption can be controlled automatically by the device using the PID controller.
 
 ![pad](doc/pad_s.jpg)
 
 The display shows the current, voltage, power consumption, target current, temperature, PWM duty and status of the load. 
-If you start the load, the display shows the yellow color circle in the left bottom corner and blinking. If the load is stopped, the circle is disappeared.
+If you start the load, the display shows the yellow color circle in the left bottom corner and blinking. If the load is stopped, the circle disappears.
 After the measure, the data is sent to the server. If the WiFi connection is not established, the data is stored in the internal memory buffer. When the WiFi connection is established, the data is sent to the server. However, the memory buffer is not stored more than 4096 samples. If the some data is stored in the memory buffer, the display shows the red bar in the bottom of the display. 
 
 You can see the realtime data using Dashboard by [InfluxDB](https://www.influxdata.com/influxdb/).
 
 ![dashboard](doc/dashboard.jpg)
 
-After the measure, to stop logging, press the Center Position of the touch pad during over a second. The load is stopped and the data in not sent to the server.
+After the measure, to stop logging, press the Center Position of the touch pad during over a second. The load is stopped and the data is not sent to the server.
 
 The dashboard shows the graphs of voltage, current, power consumption, and PWM duty. The temperature of the heat sink and FAN RPM also shown in the dashboard. 
 
@@ -55,7 +55,7 @@ The dashboard shows the graphs of voltage, current, power consumption, and PWM d
 Using Ubuntu 22.04.3 LTS and ESP-IDF V5.2.1
 
 ## Prerequisites
-Before proceeding with the installation, ensure that your system meets the following requirements:
+Ensure that your system meets the following requirements before proceeding with the installation:
 - Operating System: Linux-based distribution
 - Required Packages: git, python3, python3-pip, gcc, build-essential, curl, pkg-config, libudev-dev, libtinfo5, clang, libclang-dev, llvm-dev, udev, libssl-dev, python3.10-venv
 
@@ -123,7 +123,7 @@ cd electricload/code
 ```
 
 ### 7. Setting WiFi SSID, Password, etc.
-Change the following the configuration file: `cfg.toml`
+Change the following configuration file: `cfg.toml`
 You have to set the following parameters. WiFi SSID, Password, InfluxDB Server IP Address, InfluxDB API Key, and InfluxDB API with your ORG.
 You can get the API Key from the InfluxDB Web Console. Please see the 'How to Install the influxDB and Configure the Dashboard' section No.3.
 
@@ -355,7 +355,7 @@ Click `GET STARTED` and set `Username`, `Password`, `Initial Organization Name`,
 |Username|Set login username as influxDB administrator web console|
 |Password|Set login password as influxDB administrator web console|
 |Initial Organization Name| Organization Name ex. ORG|
-|Initail Bucket Name| LOGGER |
+|Initial Bucket Name| LOGGER |
 
 After set them, click `CONTINUE`.
 
@@ -381,6 +381,11 @@ If you want to customize the dashboard design, click configure mark. You can cha
 ## Schematic, PCB Gabar Data
 
 There is a Schematic data in hardware directory. 
+The heat sink is not included in the schematic data. You can use the heat sink with the fan for LGA115x CPU Cooler. 
+
+I used this [heat sink](https://www.ainex.jp/products/cc-06b/)
+
+I guess another [heat sink](https://www.tronwire.com/collections/tronwire-cpu-coolers/products/tw-10) is also good.
 
 ## LICENSE
 This source code is licensed under MIT. Other Hardware Schematic documents are licensed under CC-BY-SA V4.0.
