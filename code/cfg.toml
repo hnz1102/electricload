@@ -1,7 +1,7 @@
 [electricload]
 wifi_ssid = "<SSID>"
 wifi_psk = "<PASSWORD>"
-http_server = "<InfluxDB IP>:8086"
+influxdb_server = "<InfluxDB IP>:8086"
 pid_kp = "0.001"
 pid_ki = "0.022"
 pid_kd = "0.00001"

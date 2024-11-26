@@ -1,6 +1,8 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// CurrentLogs
+// CurrentLogs is a module to record the current, voltage, power, battery, temperature, rpm, and pwm.
+// It is used to record the data for the electric load.
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
 
 use log::*;
 

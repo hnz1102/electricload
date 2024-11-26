@@ -1,6 +1,6 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// This is electric-load main program for ESP32-S3-WROOM-1-N16R8.
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
 
 use std::{thread, time::Duration};
 use esp_idf_hal::{gpio::*, prelude::*, spi, i2c};
@@ -40,7 +40,7 @@ pub struct Config {
     #[default("")]
     wifi_psk: &'static str,
     #[default("")]
-    http_server: &'static str,
+    influxdb_server: &'static str,
     #[default("0.00001")]
     pid_kp: &'static str,
     #[default("0.05")]
@@ -78,7 +78,7 @@ fn main() -> anyhow::Result<()> {
     let max_current_limit = CONFIG.max_current_limit.parse::<f32>().unwrap();
     let max_power_limit = CONFIG.max_power_limit.parse::<f32>().unwrap();
     info!("[Limit] Current: {}A  Power: {}W", max_current_limit, max_power_limit);
-    let server_info = ServerInfo::new(CONFIG.http_server.to_string(), 
+    let server_info = ServerInfo::new(CONFIG.influxdb_server.to_string(), 
         CONFIG.influxdb_api_key.to_string(),
         CONFIG.influxdb_api.to_string(),
         CONFIG.influxdb_measurement.to_string(),

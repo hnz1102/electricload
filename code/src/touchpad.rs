@@ -1,6 +1,6 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// TouchPad Driver for ESP32
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
 
 #![allow(dead_code)]
 

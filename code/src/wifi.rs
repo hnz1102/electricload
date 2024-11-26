@@ -1,6 +1,6 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// Wi-Fi connection and RSSI measurement
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
 
 #![allow(dead_code)]
 

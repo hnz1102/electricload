@@ -1,6 +1,8 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// Display control module for SSD1331 OLED display.
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
+
+#![allow(dead_code)]
 
 use log::*;
 use std::{thread, time::Duration, sync::Arc, sync::Mutex};

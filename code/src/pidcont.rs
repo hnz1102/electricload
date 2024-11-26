@@ -1,10 +1,12 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// PID controller implementation
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
+
+#![allow(dead_code, unused_imports)]
 
 use std::time::SystemTime;
 use std::time::UNIX_EPOCH;
-// use log::info;
+use log::info;
 
 pub struct PIDController {
     kp: f32,

@@ -1,6 +1,6 @@
-// This is electric-load main program.
-// License: MIT
-// Author: 2024, Hiroshi Nakajima
+// Transfer data to the InfluxDB server
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2024 Hiroshi Nakajima
 
 use log::*;
 use std::{thread, sync::Arc, sync::Mutex};
