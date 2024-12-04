@@ -381,6 +381,7 @@ If you want to customize the dashboard design, click configure mark. You can cha
 ## Schematic, PCB Gabar Data
 
 There is a Schematic data in hardware directory. 
+If you want to make the PCB, you can order the [PCBway](https://www.pcbway.com/project/shareproject/Digitally_Controlled_Electric_Load_504eb052.html) this link.
 The heat sink is not included in the schematic data. You can use the heat sink with the fan for LGA115x CPU Cooler. 
 
 I used this [heat sink](https://www.ainex.jp/products/cc-06b/)
