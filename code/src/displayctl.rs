@@ -258,14 +258,17 @@ impl DisplayPanel {
                 }
 
                 // Power
-                if lck.power < 10.0 {
+                if lck.power < 1.0 {
                     Text::new(&format!("{:.0}mW", lck.power * 1000.0), Point::new(54, cur_pos), middle_style_white).draw(&mut display).unwrap();
                 }
                 else if lck.power >= 10.0 && lck.power < 50.0 {
                     Text::new(&format!("{:.1}W", lck.power), Point::new(54, cur_pos), middle_style_yellow).draw(&mut display).unwrap();
                 }
-                else {
+                else if lck.power >= 50.0 {
                     Text::new(&format!("{:.1}W", lck.power), Point::new(54, cur_pos), middle_style_red).draw(&mut display).unwrap();
+                }
+                else {
+                    Text::new(&format!("{:.2}W", lck.power), Point::new(54, cur_pos), middle_style_white).draw(&mut display).unwrap();
                 }
 
                 // Water mark of buffer
