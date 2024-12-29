@@ -41,7 +41,7 @@
 "U203","SPX3819M5-L","Package_TO_SOT_SMD:SOT-23-5","1","1016-1871-1-ND","https://www.digikey.com/en/products/detail/maxlinear-inc/SPX3819M5-L-TR/2472388"
 "U301","ESP32-S3-WROOM-1-N16R8","Library:ESP32-S3-WROOM-1_EXP","1","1965-ESP32-S3-WROOM-1-N16R8CT-ND","https://www.digikey.com/en/products/detail/espressif-systems/ESP32-S3-WROOM-1-N16R8/16162642"
 "U302","SSD1331_DISPLAY","Library:OLED SSD1331 SPI DISPLAY","1","","https://akizukidenshi.com/catalog/g/gP-14435/"
-"U401","OPA187IDBVR","Package_TO_SOT_SMD:SOT-23-5","1","497-16082-1-ND","https://www.digikey.jp/en/products/detail/stmicroelectronics/TSB611ILT/5639707"
+"U401","OPA187IDBVR","Package_TO_SOT_SMD:SOT-23-5","1","296-53156-1-ND","https://www.digikey.com/en/products/detail/texas-instruments/OPA187IDBVR/9861469"
 "U402","INA228","Package_SO:VSSOP-10_3x3mm_P0.5mm","1","296-INA228AIDGSRCT-ND","https://www.digikey.com/en/products/detail/texas-instruments/INA228AIDGSR/13691042"
 "U403","LM35-NEB","Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown","1","LM35DT/NOPB-ND","https://www.digikey.jp/en/products/detail/texas-instruments/LM35DT-NOPB/362706"
 "U404","TSB611ILT","Package_TO_SOT_SMD:SOT-23-5","1","497-16082-1-ND","https://www.digikey.jp/en/products/detail/stmicroelectronics/TSB611ILT/5639707"
