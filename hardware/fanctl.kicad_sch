@@ -2718,6 +2718,24 @@
 				(hide yes)
 			)
 		)
+		(property "digikey" "WM4330-ND"
+			(at 219.71 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "distributor" "https://www.digikey.jp/en/products/detail/molex/0470531000/2421261"
+			(at 219.71 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "d2f26335-8642-4a82-997f-c91de56f9267")
 		)

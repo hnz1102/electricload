@@ -5804,7 +5804,7 @@
 				)
 			)
 		)
-		(property "Value" "TSB611ILT"
+		(property "Value" "OPA187IDBVR"
 			(at 102.87 82.55 0)
 			(effects
 				(font
@@ -6902,6 +6902,24 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 86.36 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "digikey" "2019-RCWCTECT-ND"
+			(at 86.36 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "distributor" "https://www.digikey.jp/en/products/detail/koa-speer-electronics-inc/RCWCTE/11476558"
 			(at 86.36 157.48 0)
 			(effects
 				(font
