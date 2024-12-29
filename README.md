@@ -390,7 +390,7 @@ I guess another [heat sink](https://www.tronwire.com/collections/tronwire-cpu-co
 
 This PCB is designed by [Kicad](https://www.kicad.org/). This board image photo is shown the jumper wire. But, the PCB data is already fixed the error.
 
-update 2024-12-24: I changed the OpAmp from TSB6111ILT to OPA1871DBVR. OPA1871DBVR is a low noise and low offset voltage OpAmp. It can be used for the high precision control.
+UPDATE 2024-12-29: I changed the OpAmp from TSB6111ILT to OPA187IDBVR. OPA187IDBVR is a low noise and low offset voltage OpAmp. It can be used for the high precision control.
 
 ## LICENSE
 This source code is licensed under MIT. Other Hardware Schematic documents are licensed under CC-BY-SA V4.0.
