@@ -1,6 +1,6 @@
 // This is electric-load main program for ESP32-S3-WROOM-1-N16R8.
 // SPDX-License-Identifier: MIT
-// Copyright (c) 2024 Hiroshi Nakajima
+// Copyright (c) 2024-2025 Hiroshi Nakajima
 
 use std::{thread, time::Duration};
 use esp_idf_hal::{gpio::*, prelude::*, spi, i2c};
@@ -9,13 +9,16 @@ use esp_idf_hal::peripherals::Peripherals;
 use embedded_hal::spi::MODE_0;
 use log::*;
 use std::time::SystemTime;
-use esp_idf_hal::adc::config::Config as AdcConfig;
-use esp_idf_hal::adc::AdcChannelDriver;
-use esp_idf_hal::adc::AdcDriver;
+use esp_idf_hal::adc::oneshot::config::AdcChannelConfig as AdcConfig;
+use esp_idf_hal::adc::oneshot::config::Calibration;
+use esp_idf_hal::adc::oneshot::*;
+use esp_idf_hal::adc::attenuation::DB_11;
 use esp_idf_hal::ledc::config::TimerConfig;
 use esp_idf_hal::ledc::LedcTimerDriver;
 use esp_idf_hal::ledc::LedcDriver;
 use esp_idf_svc::sntp::{EspSntp, SyncStatus, SntpConf, OperatingMode, SyncMode};
+use esp_idf_svc::wifi::EspWifi;
+use esp_idf_svc::nvs::*;
 use chrono::{DateTime, Utc};
 
 mod displayctl;
@@ -63,6 +66,43 @@ pub struct Config {
     influxdb_tag: &'static str,
 }
 
+// NVS key for storing the last load current setting
+const NVS_KEY_LOAD_CURRENT: &str = "load_current";
+
+// Load the last saved load current from NVS
+fn load_current_from_nvs(nvs: &mut EspNvs<NvsDefault>) -> f32 {
+    match nvs.get_i32(NVS_KEY_LOAD_CURRENT) {
+        Ok(Some(current_i32)) => {
+            let current = current_i32 as f32 / 1000.0;
+            info!("Loaded last load current from NVS: {:.3}A", current);
+            current
+        },
+        Ok(None) => {
+            info!("No saved load current found in NVS, using default 0.0A");
+            0.0
+        },
+        Err(e) => {
+            info!("Error reading load current from NVS: {:?}, using default 0.0A", e);
+            0.0
+        }
+    }
+}
+
+// Save the current load setting to NVS
+fn save_current_to_nvs(nvs: &mut EspNvs<NvsDefault>, current: f32) -> anyhow::Result<()> {
+    let current_i32 = (current * 1000.0) as i32;
+    match nvs.set_i32(NVS_KEY_LOAD_CURRENT, current_i32) {
+        Ok(()) => {
+            info!("Saved load current to NVS: {:.3}A", current);
+            Ok(())
+        },
+        Err(e) => {
+            info!("Error saving load current to NVS: {:?}", e);
+            Err(e.into())
+        }
+    }
+}
+
 fn main() -> anyhow::Result<()> {
     esp_idf_sys::link_patches();
     esp_idf_svc::log::EspLogger::initialize_default();
@@ -71,6 +111,11 @@ fn main() -> anyhow::Result<()> {
     unsafe {
         esp_idf_sys::nvs_flash_init();
     }
+
+    // Initialize NVS partition for storing settings
+    let nvs_default_partition = EspDefaultNvsPartition::take()?;
+    let mut nvs = EspNvs::new(nvs_default_partition, "storage", true)?;
+
     // Peripherals Initialize
     let peripherals = Peripherals::take().unwrap();
     
@@ -179,13 +224,9 @@ fn main() -> anyhow::Result<()> {
     let mut clogs = CurrentRecord::new();
 
     // WiFi
-    let wifi_enable : bool;
-    let wifi = wifi::wifi_connect(peripherals.modem, CONFIG.wifi_ssid, CONFIG.wifi_psk);
-    match wifi {
-        Ok(_) => { wifi_enable = true; },
-        Err(e) => { info!("{:?}", e); wifi_enable = false }
-    }
-    
+    let mut wifi_enable : bool;
+    let mut wifi_dev = wifi::wifi_connect(peripherals.modem, CONFIG.wifi_ssid, CONFIG.wifi_psk);
+        
     // NTP Server
     let sntp_conf = SntpConf {
         servers: ["time.aws.com",
@@ -203,7 +244,13 @@ fn main() -> anyhow::Result<()> {
     info!("NTP Sync Start..");
 
     // wait for sync
+    let mut sync_count = 0;
     while ntp.get_sync_status() != SyncStatus::Completed {
+        sync_count += 1;
+        if sync_count > 1000 {
+            info!("NTP Sync Timeout");
+            break;
+        }
         thread::sleep(Duration::from_millis(10));
     }
     let now = SystemTime::now();
@@ -217,10 +264,16 @@ fn main() -> anyhow::Result<()> {
     // TouchPad
     let mut touchpad = TouchPad::new();
     touchpad.start();
-    
-    // ADC GPIO18 for Temperature
-    let mut adc = AdcDriver::new(peripherals.adc2, &AdcConfig::new().calibration(true))?;
-    let mut temp_pin : AdcChannelDriver<'_, {esp_idf_sys::adc_atten_t_ADC_ATTEN_DB_11}, Gpio18> = AdcChannelDriver::new(peripherals.pins.gpio18)?;
+
+    // ADC2-CH7 GPIO18 for Temperature
+    let mut adc_temp = AdcDriver::new(peripherals.adc2)?;
+    let mut adc_temp_config = AdcConfig {
+        attenuation: DB_11,
+        calibration: Calibration::Curve,
+        .. AdcConfig::default()
+    };
+    let mut temp_pin = AdcChannelDriver::new(&mut adc_temp, peripherals.pins.gpio18, &mut adc_temp_config)?;
+
 
     // PID Controller
     let pid_kp = CONFIG.pid_kp.parse::<f32>().unwrap();
@@ -237,7 +290,8 @@ fn main() -> anyhow::Result<()> {
     let mut measurement_count : u32 = 0;
     let mut logging_start = false;
     let mut load_start = false;
-    let mut set_load_current = 0.0;
+    let mut set_load_current = load_current_from_nvs(&mut nvs);
+    dp.set_load_current(set_load_current);
     let mut pwm_duty = 0;
     loop {
         thread::sleep(Duration::from_millis(10));
@@ -279,13 +333,28 @@ fn main() -> anyhow::Result<()> {
                 load_start = true;
                 measurement_count = 0;
                 info!("Logging and Sending Start..");
+                // Save current load setting to NVS when starting
+                if let Err(e) = save_current_to_nvs(&mut nvs, set_load_current) {
+                    info!("Failed to save load current to NVS: {:?}", e);
+                }
                 pid.reset();
                 clogs.clear();
                 dp.enable_display(true);
             }
         }
 
-        if wifi_enable == false{
+        let rssi = wifi::get_rssi();
+        if rssi == 0 {
+            wifi_enable = false;
+            if measurement_count % 1000 == 0 {
+                wifi_reconnect(&mut wifi_dev.as_mut().unwrap());
+            }
+        }
+        else {
+            wifi_enable = true;
+        }
+
+        if wifi_enable == false {
             dp.set_wifi_status(WifiStatus::Disconnected);
         }
         else {
@@ -312,7 +381,7 @@ fn main() -> anyhow::Result<()> {
         i2cdrv.write(0x40, &[0x05u8; 1], BLOCK)?;
         match i2cdrv.read(0x40, &mut vbus_buf, BLOCK){
             Ok(_v) => {
-                let vbus = ((((vbus_buf[0] as u32) << 16 | (vbus_buf[1] as u32) << 8 | (vbus_buf[2] as u32)) >> 4) as f32 * 193.3125) / 1000_000.0;
+                let vbus = ((((vbus_buf[0] as u32) << 16 | (vbus_buf[1] as u32) << 8 | (vbus_buf[2] as u32)) >> 4) as f32 * 195.3125) / 1000_000.0;
                 data.voltage = vbus; // V
                 // info!("vbus={:?} {:?}V", vbus_buf, data.voltage);
             },
@@ -369,7 +438,7 @@ fn main() -> anyhow::Result<()> {
         }
 
         // Temperature
-        let temp = adc.read(&mut temp_pin).unwrap() as f32 * 0.05;
+        let temp = temp_pin.read().unwrap() as f32 * 0.05;
         data.temp = temp;
         // info!("Temperature: {:.2}°C", temp);
         dp.set_temperature(temp);
@@ -433,4 +502,14 @@ fn fan_pwm_control(current_temp: f32, max_duty: u32) -> u32 {
         duty = 0;
     }
     duty
+}
+
+fn wifi_reconnect(wifi_dev: &mut EspWifi) -> bool{
+    unsafe {
+        esp_idf_sys::esp_wifi_start();
+    }
+    match wifi_dev.connect() {
+        Ok(_) => { info!("Wifi connecting requested."); true},
+        Err(ref e) => { info!("{:?}", e); false }
+    }
 }

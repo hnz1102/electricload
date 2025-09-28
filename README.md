@@ -392,5 +392,13 @@ This PCB is designed by [Kicad](https://www.kicad.org/). This board image photo 
 
 UPDATE 2024-12-29: I changed the OpAmp from TSB6111ILT to OPA187IDBVR. OPA187IDBVR is a low noise and low offset voltage OpAmp. It can be used for the high precision control.
 
+# Changelog
+
+## v0.1.1
+- **NVS Configuration Persistence**: Added functionality to save the last load current setting to NVS (Non-Volatile Storage) and restore it on the next startup. This allows the device to remember the previous current setting even after power cycles or resets.
+- **ESP-IDF Update**: Updated ESP-IDF from v5.2.1 to v5.4.2 for improved stability and latest features.
+- **WiFi Reconnection Enhancement**: Added automatic WiFi reconnection functionality to maintain network connectivity during temporary disconnections.
+- **Voltage Measurement Correction**: Fixed bus voltage resolution from 193.3125µV to 195.3125µV for more accurate voltage measurements.
+
 ## LICENSE
 This source code is licensed under MIT. Other Hardware Schematic documents are licensed under CC-BY-SA V4.0.
