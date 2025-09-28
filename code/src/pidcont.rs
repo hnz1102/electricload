@@ -46,14 +46,64 @@ impl PIDController {
     pub fn update(&mut self, input: f32) -> f32 {
         let now = SystemTime::now();
         let nano = now.duration_since(UNIX_EPOCH).unwrap().as_nanos();
-        let dt = (nano - self.prev_time) as f32 / 1000000000.0;
+        
+        // Initial execution guard
+        if self.prev_time == 0 {
+            self.prev_time = nano;
+            self.prev_error = self.setpoint - input;
+            return 0.0;
+        }
+        
+        // Calculate dt in milliseconds (not converted to seconds)
+        let dt_ms = (nano - self.prev_time) as f32 / 1000000.0; // Convert nanoseconds to milliseconds
+        
+        // Guard against abnormal dt values (less than 1ms or more than 10000ms)
+        if dt_ms <= 1.0 || dt_ms > 10000.0 || !dt_ms.is_finite() {
+            info!("Abnormal dt_ms detected: {} nano: {} prev_time: {}", dt_ms, nano, self.prev_time);
+            self.prev_time = nano;
+            return 0.0;
+        }
+        
         let error = self.setpoint - input;
-        self.integral += error * dt as f32;
-        let derivative = (error - self.prev_error) / dt as f32;
+        
+        // Update and limit integral term (in milliseconds)
+        self.integral += error * dt_ms;
+        
+        // Prevent integral windup (adjusted for milliseconds)
+        let max_integral = if self.ki > 0.0 { 100000.0 / self.ki } else { 100000.0 };
+        self.integral = self.integral.clamp(-max_integral, max_integral);
+        
+        // Reset integral if it becomes infinite
+        if !self.integral.is_finite() {
+            info!("Integral became infinite, resetting to 0");
+            self.integral = 0.0;
+        }
+        
+        let derivative = (error - self.prev_error) / dt_ms;
+        // info!("PID input: {} error: {} dt_ms: {} integral: {} derivative: {} nano: {}", 
+        //      input, error, dt_ms, self.integral, derivative, nano);
+        
+        // Limit derivative term if it becomes infinite
+        let derivative = if derivative.is_finite() { derivative } else { 0.0 };
+        
         let output = self.kp * error + self.ki * self.integral + self.kd * derivative;
+        
+        // Limit output if it becomes infinite
+        let output = if output.is_finite() { 
+            output.clamp(-1000.0, 1000.0) 
+        } else { 
+            info!("Output became infinite, setting to 0");
+            0.0 
+        };
+        
         self.prev_error = error;
         self.prev_time = nano;
-        // info!("PID error: {} dt:{} integral: {} derivative: {} output: {} output_u32: {}", error, dt, self.integral, derivative, output, output_u32);
+        
+        // if output > 0.9 || !output.is_finite() || !dt_ms.is_finite() || dt_ms < 5.0 {
+        //     info!("PID input: {} error: {} dt_ms: {} integral: {} derivative: {} output: {} nano: {}", 
+        //           input, error, dt_ms, self.integral, derivative, output, nano);
+        // }
+        
         output
     }
 }

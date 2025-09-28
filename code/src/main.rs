@@ -39,31 +39,35 @@ use pulscount::PulsCountDriver;
 #[toml_cfg::toml_config]
 pub struct Config {
     #[default("")]
-    wifi_ssid: &'static str,
+    wifi_ssid: &'static str,                // Your WiFi SSID
     #[default("")]
-    wifi_psk: &'static str,
+    wifi_psk: &'static str,                 // Your WiFi Password
     #[default("")]
-    influxdb_server: &'static str,
+    influxdb_server: &'static str,          // InfluxDB Server Address
     #[default("0.00001")]
-    pid_kp: &'static str,
+    pid_kp: &'static str,                   // PID Controller Kp
     #[default("0.05")]
-    pid_ki: &'static str,
+    pid_ki: &'static str,                   // PID Controller Ki
     #[default("0.000001")]
-    pid_kd: &'static str,
+    pid_kd: &'static str,                   // PID Controller Kd
     #[default("4500")]
-    pwm_offset: &'static str,
+    pwm_offset: &'static str,               // PWM Offset
     #[default("11.0")]
-    max_current_limit: &'static str,
+    max_current_limit: &'static str,        // Maximum Current Limit
     #[default("110.0")]
-    max_power_limit: &'static str,
+    max_power_limit: &'static str,          // Maximum Power Limit
+    #[default("1.1")]
+    max_current_limit_ratio: &'static str,  // Maximum Current Limit Ratio to Set Current
+    #[default("0.1")]
+    under_voltage_limit: &'static str,      // Under Voltage Limit
     #[default("")]
-    influxdb_api_key: &'static str,
+    influxdb_api_key: &'static str,         // InfluxDB API Key
     #[default("")]
-    influxdb_api: &'static str,
+    influxdb_api: &'static str,             // InfluxDB API Path
     #[default("")]
-    influxdb_measurement: &'static str,
+    influxdb_measurement: &'static str,     // InfluxDB Measurement Name
     #[default("")]
-    influxdb_tag: &'static str,
+    influxdb_tag: &'static str,             // InfluxDB Tag Name
 }
 
 // NVS key for storing the last load current setting
@@ -122,7 +126,9 @@ fn main() -> anyhow::Result<()> {
     // Load Config
     let max_current_limit = CONFIG.max_current_limit.parse::<f32>().unwrap();
     let max_power_limit = CONFIG.max_power_limit.parse::<f32>().unwrap();
-    info!("[Limit] Current: {}A  Power: {}W", max_current_limit, max_power_limit);
+    let max_current_limit_ratio = CONFIG.max_current_limit_ratio.parse::<f32>().unwrap();
+    let under_voltage_limit = CONFIG.under_voltage_limit.parse::<f32>().unwrap();
+    info!("[Limit] Current: {}A  Power: {}W  Current Ratio: {}  Under Voltage: {}V", max_current_limit, max_power_limit, max_current_limit_ratio, under_voltage_limit);
     let server_info = ServerInfo::new(CONFIG.influxdb_server.to_string(), 
         CONFIG.influxdb_api_key.to_string(),
         CONFIG.influxdb_api.to_string(),
@@ -292,7 +298,7 @@ fn main() -> anyhow::Result<()> {
     let mut load_start = false;
     let mut set_load_current = load_current_from_nvs(&mut nvs);
     dp.set_load_current(set_load_current);
-    let mut pwm_duty = 0;
+    let mut pwm_duty;
     loop {
         thread::sleep(Duration::from_millis(10));
 
@@ -451,9 +457,10 @@ fn main() -> anyhow::Result<()> {
         let rpm = pulscnt.get_rpm();
         data.rpm = rpm;
         dp.set_voltage(data.voltage, data.current, data.power);
-        if data.voltage < 0.05 || data.current - set_load_current > 5.0 {
+        if data.voltage < under_voltage_limit || (data.current > set_load_current * max_current_limit_ratio) {
             // no voltage, over current
             pid.reset();
+            pwm_duty = 0;
         }
         else {
             // PID Control  

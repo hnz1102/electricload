@@ -394,6 +394,14 @@ UPDATE 2024-12-29: I changed the OpAmp from TSB6111ILT to OPA187IDBVR. OPA187IDB
 
 # Changelog
 
+## v0.1.2
+- **PID Control Enhancement**: Improved PID controller performance for better current regulation and stability.
+- **Under Voltage Protection**: Added `under_voltage_limit` configuration parameter. When the voltage drops below this threshold, the PID controller is reset to prevent inrush current during startup or low voltage conditions.
+- **Overcurrent Protection**: Implemented overcurrent protection using `max_current_limit_ratio` parameter. When the actual current exceeds the set current multiplied by this ratio, the PID controller is reset and output is set to zero to protect against excessive current flow.
+- **Inrush Current Suppression**: These protection mechanisms work together to suppress inrush current during startup and abnormal conditions, ensuring safer operation.
+
+**Note: After updating to v0.1.2, it is necessary to reconfigure the `cfg.toml` file to include the new parameters. Some PID parameters are changed, so please update them accordingly.**
+
 ## v0.1.1
 - **NVS Configuration Persistence**: Added functionality to save the last load current setting to NVS (Non-Volatile Storage) and restore it on the next startup. This allows the device to remember the previous current setting even after power cycles or resets.
 - **ESP-IDF Update**: Updated ESP-IDF from v5.2.1 to v5.4.2 for improved stability and latest features.
